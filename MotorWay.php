@@ -1,22 +1,24 @@
 <?php
 
-require_once './HighWay.php';
+
+require_once 'HighWay.php';
 
 final class MotorWay extends HighWay
 {
 
-    protected int $nbLane=4;
-    protected int $maxSpeed=130;
-
-    public function addVehicle(Vehicle $vehicle) 
+    public function __construct($nbLane = 4, $maxSpeed = 130)
     {
-        if (!($vehicle instanceof Bike) && !($vehicle instanceof SkateBoard))
-        {
-            return "Not allowed here <br><br>";
-        }else {
-            $this->currentVehicules[] = $vehicle;
-            return 'This vehicule is allowed <br><br>';
+        parent::__construct($nbLane, $maxSpeed);
+
+    }
+
+
+    public function addVehicule(object $Vehicle)
+    {
+        if ($Vehicle instanceof Car || $Vehicle instanceof Camion) {
+            $this->currentVehicles[] = $Vehicle;
         }
     }
-   
-    }
+
+
+}

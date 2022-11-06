@@ -1,45 +1,49 @@
 <?php
 
-require_once './Vehicle.php;';
 
 abstract class HighWay
 {
-    protected array $currentVehicle;
-    protected int $nbLane;
-    protected int $maxSpeed;
+    private array $currentVehicles ;
+    private int $nbLane ;
+    private int $maxSpeed ;
 
-    abstract public function addVehicle(Vehicle $vehicle);
+    public function __construct($nbLane, $maxSpeed)
+    {
+        $this->nbLane = $nbLane;
+        $this->maxSpeed = $maxSpeed;
+    }
 
     public function getCurrentVehicles(): array
     {
         return $this->currentVehicles;
     }
-    public function setCurrentVehicles($currentVehicles): self
-     {
-        $this->currentVehicles = $currentVehicles;
 
-       return $this;
-    }
-    
-    
-    
+      public function setCurrentVehicles(array $currentVehicles)
+    {
+            $this->currentVehicles = $currentVehicles;
+        }
 
-    public function getnbLane(): int 
+
+    public function getNbLane(): int
     {
         return $this->nbLane;
     }
-    public function setnbLane($nbLane): self 
+
+    public function setNbLane(int $nbLane)
     {
         $this->nbLane = $nbLane;
-        return $this;
     }
-    public function getmaxSpeed(): int 
-    { 
+
+    public function getMaxSpeed(): int
+    {
         return $this->maxSpeed;
     }
-    public function setMaxSpeed($maxSpeed): self 
+
+    public function setMaxSpeed(int $maxSpeed)
     {
         $this->maxSpeed = $maxSpeed;
-        return $this;
     }
+
+
+    abstract public function addVehicule(object $Vehicle);
 }
